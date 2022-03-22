@@ -51,13 +51,13 @@ cloc:
 
 # Check
 # Lint tools
-check: vet fmt check-static # TODO: enable lint
+check: fmt vet check-static lint
 
 lint: tools/bin/revive
 	@tools/bin/revive -formatter friendly -config tools/check/revive.toml $(FILES)
 
 vet:
-	$(GO) vet ./...
+	$(GO) vet $$(go list ./... | grep -vE "wintun|tools|systray")
 
 check-static: tools/bin/golangci-lint
 	tools/bin/golangci-lint run --timeout 5m ./...

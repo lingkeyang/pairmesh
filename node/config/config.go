@@ -166,7 +166,7 @@ func (c *Config) Clone() *Config {
 // Save saves the configuration to disk
 func (c *Config) Save() error {
 	path := c.path()
-	w, err := os.Create(path)
+	_, err := os.Create(path)
 	if err != nil && !errors.Is(err, os.ErrNotExist) {
 		return err
 	}
@@ -180,7 +180,7 @@ func (c *Config) Save() error {
 		}
 	}
 
-	w, err = os.Create(path)
+	w, err := os.Create(path)
 	if err != nil {
 		return err
 	}

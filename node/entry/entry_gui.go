@@ -85,7 +85,7 @@ func Run() {
 	logutil.InitLogger()
 
 	if err := precheck(); err != nil {
-		zap.L().Fatal("Precheck failed", zap.Error(err))
+		messagebox.Fatal("Precheck failed", err.Error())
 	}
 
 	cfg := &config.Config{}

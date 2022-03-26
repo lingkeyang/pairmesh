@@ -14,10 +14,9 @@
 
 package messagebox
 
-import (
-	"github.com/lxn/walk"
-)
+import "go.uber.org/zap"
 
-func fatal(title, content string) {
-	walk.MsgBox(nil, title, content, walk.MsgBoxOK)
+func Fatal(title, content string) {
+	fatal(title, content)
+	zap.L().Fatal("Application exit", zap.Stack("stack"), zap.String("title", title), zap.String("content", content))
 }

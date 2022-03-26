@@ -22,12 +22,14 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"go.uber.org/atomic"
 	"net"
 	"net/http"
 	"net/url"
 	"os"
 	"time"
+
+	"github.com/pairmesh/pairmesh/internal/messagebox"
+	"go.uber.org/atomic"
 
 	"github.com/emersion/go-autostart"
 	"github.com/pairmesh/pairmesh/i18n"
@@ -89,12 +91,12 @@ func Run() {
 	cfg := &config.Config{}
 	err := cfg.Load()
 	if err != nil {
-		zap.L().Fatal("Load configuration failed", zap.Error(err))
+		messagebox.Fatal("Load configuration failed", err.Error())
 	}
 
 	listener, err := net.Listen("tcp", ":0")
 	if err != nil {
-		zap.L().Fatal("Listen HTTP failed", zap.Error(err))
+		messagebox.Fatal("Listen HTTP failed", err.Error())
 	}
 
 	app := newOSApp()
@@ -106,12 +108,12 @@ func Run() {
 	app.api = api.New(config.APIGateway(), cfg.Token, cfg.MachineID)
 
 	if err := exchangeAuthKeyIfNeed(app.api, app.cfg); err != nil {
-		zap.L().Fatal("Exchange auth key failed", zap.Error(err))
+		messagebox.Fatal("Exchange auth key failed", err.Error())
 	}
 
 	dev, err := device.NewDevice()
 	if err != nil {
-		zap.L().Fatal("Preflight device failed", zap.Error(err))
+		messagebox.Fatal("Preflight device failed", err.Error())
 	}
 	app.dev = dev
 
@@ -141,14 +143,14 @@ func Run() {
 		http.Handle("/local/auth/callback", http.HandlerFunc(app.onLoginCallback))
 		err := http.Serve(listener, nil)
 		if err != nil {
-			zap.L().Fatal("Serve listener failed", zap.Error(err))
+			messagebox.Fatal("Serve listener failed", err.Error())
 		}
 	}()
 
 	zap.L().Info("Startup node successfully")
 
 	if err := app.Run(); err != nil {
-		zap.L().Fatal("Run application failed", zap.Error(err))
+		messagebox.Fatal("Run application failed", err.Error())
 	}
 }
 

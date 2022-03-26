@@ -17,5 +17,5 @@ package messagebox
 import "github.com/pairmesh/pairmesh/internal/messagebox/cocoa"
 
 func fatal(title, content string) {
-	cocoa.Error(content, title)
+	cocoa.Error(title, content)
 }

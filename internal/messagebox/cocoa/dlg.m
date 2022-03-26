@@ -34,9 +34,7 @@ DlgResult alertDlg(AlertDlgParams* params) {
 		return self->result;
 	}
 	NSAlert* alert = [[NSAlert alloc] init];
-	if(self->params->title != nil) {
-		[[alert window] setTitle:[[NSString alloc] initWithUTF8String:self->params->title]];
-	}
+    [[alert window] setTitle:[[NSString alloc] initWithUTF8String:self->params->title]];
 	[alert setMessageText:[[NSString alloc] initWithUTF8String:self->params->msg]];
 	switch (self->params->style) {
 	case MSG_YESNO:

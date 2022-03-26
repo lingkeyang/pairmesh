@@ -50,8 +50,8 @@ const (
 )
 
 // DefaultAPIGateway represents the gateway's default address
-const DefaultAPIGateway = "https://api.pairmesh.com"
-const DefaultMyGateway = "https://my.pairmesh.com"
+const DefaultAPIGateway = "http://192.168.0.128:2823"
+const DefaultMyGateway = "http://192.168.0.128:8080"
 
 // Packet protocol constants
 
@@ -67,6 +67,8 @@ const (
 	PacketHeaderSize     = 10
 	FragmentHeaderSize   = 14
 )
+
+// something
 
 // MaxBufferSize represents the max buffer size of read UDP packet
 const MaxBufferSize = 4096

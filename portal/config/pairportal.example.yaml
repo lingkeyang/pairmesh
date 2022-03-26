@@ -21,10 +21,10 @@ dataDir: ./cache/
 relay:
   authKey: my-testing-relay
 sso:
-  redirect: 'http://127.0.0.1:8080'
+  redirect: 'http://192.168.0.128:8080'
   github:
-    clientID: x
-    clientSecret: x
+    clientID: 8851712b70d12fa56068
+    clientSecret: fbefe89104d643f494239c8ebf48060fe0d42eda
 mysql:
   host: 127.0.0.1
   port: 3306

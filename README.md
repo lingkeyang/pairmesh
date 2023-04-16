@@ -59,7 +59,6 @@ The following diagram shows the overall architecture of PairMesh, where the Pair
 
 You can join these discussion forum and chats to discuss and ask PairMesh related questions:
 
-- [PairMesh Discussion](https://github.com/pairmesh/pairmesh/discussions)
 - [Slack channel](https://pairmesh.slack.com)
 
 ## Contributing
@@ -77,7 +76,8 @@ PairMesh is developed by an open and friendly community. Everybody is cordially 
 
 Here are guidelines for contributing to various aspect of the project:
 
-- [How to setup development environment](docs/guide/dev-guide.md)
+- [How to contribute](./CONTRIBUTING.md)
+- [PairMesh GitHub workflow](./docs/guide/github-workflow.md)
 
 Any other question? Reach out to the [PairMesh Discussion](https://github.com/pairmesh/pairmesh/discussions) forum to get help!
 
